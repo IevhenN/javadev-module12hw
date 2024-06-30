@@ -1,7 +1,8 @@
-import home.hw.DbInit;
+import home.hw.config.Constant;
+import home.hw.dao.DbInit;
 
 public class App {
     public static void main(String[] args) {
-        DbInit.getInstance().initDB();
+        new DbInit(Constant.DB_URL).initDB();
     }
 }

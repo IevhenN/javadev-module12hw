@@ -10,7 +10,10 @@ CREATE TABLE planet (
 
 CREATE TABLE ticket (
     id IDENTITY PRIMARY KEY,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP AT TIME ZONE 'UTC' NOT NULL,
+    created_at TIMESTAMP  WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    client_id BIGINT NOT NULL,
+    from_planet_id VARCHAR(10) NOT NULL,
+    to_planet_id VARCHAR(10) NOT NULL,
     FOREIGN KEY (client_id) REFERENCES client(id),
     FOREIGN KEY (from_planet_id) REFERENCES planet(id),
     FOREIGN KEY (to_planet_id) REFERENCES planet(id)
