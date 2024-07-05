@@ -4,13 +4,14 @@ import home.hw.config.Constant;
 import org.flywaydb.core.Flyway;
 
 public class DbInit {
-    private String connectionUrl;
-
-    public DbInit(String connectionUrl) {
-        this.connectionUrl = connectionUrl;
+    public static void initProdDb(){
+        initDB(Constant.DB_URL);
+    }
+    public static void initTestDb(){
+        initDB(Constant.TEST_DB_URL);
     }
 
-    public void initDB() {
+    private static void initDB(String connectionUrl) {
         Flyway flyway = Flyway
                 .configure()
                 .dataSource(connectionUrl, null, null)
